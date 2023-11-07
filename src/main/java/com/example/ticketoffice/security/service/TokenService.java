@@ -26,11 +26,11 @@ public class TokenService {
         return calendar.getTime();
     }
 
-    private boolean validateToken(String token){
+    public boolean validateToken(String token){
         return getClaims(token).getExpiration().after(new Date());
     }
 
-    private Claims getClaims(String token) {
+    public Claims getClaims(String token) {
         return Jwts.parserBuilder().setSigningKey(Key).build().parseClaimsJws(token).getBody();
     }
 }
